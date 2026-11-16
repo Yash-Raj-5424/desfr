@@ -2,10 +2,14 @@ import argparse
 from pathlib import Path
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+          description="A dead simple file reader in CLI"
+    )
 
-    parser.add_argument("command")
-    parser.add_argument("filename")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    read_parser = subparsers.add_parser("read", help="Read a text file")
+    read_parser.add_argument("filename")
 
     args = parser.parse_args()
 
@@ -13,14 +17,15 @@ def main():
         file = Path(args.filename)
         
         if file.suffix.lower() != ".txt":
-                    print("Error: Only text files are supported for now")
-                    return
+                    parser.error("Error: Only text files are supported for now")
         
         if not file.exists():
-            print(f"Error: The File '{args.filename}' does not exist")
+            parser.error(f"Error: The File '{args.filename}' does not exist")
             return
             
         content = file.read_text(encoding="utf-8")
-        print(content)
-    else:
-        print(f"Unknown command: '{args.command}'")
+
+        print(content, end="")
+
+if __name__ == "__main__":
+    main()
