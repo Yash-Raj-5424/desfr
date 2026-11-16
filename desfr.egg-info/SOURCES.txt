@@ -1,8 +1,0 @@
-pyproject.toml
-desfr/__init__.py
-desfr/cli.py
-desfr.egg-info/PKG-INFO
-desfr.egg-info/SOURCES.txt
-desfr.egg-info/dependency_links.txt
-desfr.egg-info/entry_points.txt
-desfr.egg-info/top_level.txt
