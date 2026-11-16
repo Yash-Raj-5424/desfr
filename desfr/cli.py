@@ -22,10 +22,12 @@ def main():
         if not file.exists():
             parser.error(f"Error: The File '{args.filename}' does not exist")
             return
-            
-        content = file.read_text(encoding="utf-8")
+        try:   
+            content = file.read_text(encoding="utf-8")
 
-        print(content, end="")
+            print(content, end="")
+        except OSError as e:
+            parser.error(f"Cannot read file: {e}")
 
 if __name__ == "__main__":
     main()
