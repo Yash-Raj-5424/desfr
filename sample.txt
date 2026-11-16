@@ -1,0 +1,4 @@
+Hello from desfr!
+
+This is my first CLI project.
+It reads local text files and prints their contents - all in CLI.
